@@ -1,17 +1,17 @@
 #define LED LED_BUILTIN  // Use built-in LED
 
-// Timing Constants
+// Fixing the timing constants
 #define DOT 250       // Dot duration (·)
 #define DASH 750      // Dash duration (−)
 #define GAP 250       // Gap between elements in a letter
 #define LETTER_GAP 750 // Gap between letters
 #define WORD_GAP 1750  // Gap between words
 
-// Morse code lookup table (A-Z)
+// Morse code lookup table (A-Z)  //array
 const char* morseCode[] = {
-  ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",  // A-I
-  ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", // J-R
-  "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."         // S-Z
+  ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",  
+  ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", 
+  "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."    
 };
 
 // Function to blink a dot
@@ -59,9 +59,9 @@ void setup() {
 
 void loop() {
   if (Serial.available() > 0) {
-    char name[20];  // Buffer for user input
+    char name[20]; 
     int len = Serial.readBytesUntil('\n', name, sizeof(name) - 1);
-    name[len] = '\0';  // Null-terminate string
+    name[len] = '\0'; 
 
     Serial.print("Blinking: ");
     Serial.println(name);
